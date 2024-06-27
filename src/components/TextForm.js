@@ -15,6 +15,12 @@ export default function TextForm(props)
         setText(newText);
     }
 
+    const handleRemoveExtraSpacesClick = () =>
+    {
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "));
+    }
+
     const handleClearClick = () =>
     {
         setText("");
@@ -34,10 +40,11 @@ export default function TextForm(props)
                 <div className="mb-3">
                     <textarea className="form-control" id="myBox" value={text} onChange={handleOnChange} placeholder="Enter text here" rows="8"></textarea>
                 </div>
-                <button type="button" className="btn btn-primary me-2" onClick={handleUpClick}>Upper case</button>
-                <button type="button" className="btn btn-primary me-2" onClick={handleLowerClick}>Lower case</button>
+                <button type="button" className="btn btn-primary me-2" onClick={handleUpClick}>Convert to Upper case</button>
+                <button type="button" className="btn btn-primary me-2" onClick={handleLowerClick}>Convert to Lower case</button>
+                <button type="button" className="btn btn-primary me-2" onClick={handleRemoveExtraSpacesClick}>Remove extra spaces</button>
                 <div className="d-grid gap-2 mt-2">
-                    <button type="button" className="btn btn-secondary" onClick={handleClearClick}>Clear</button>
+                    <button type="button" className="btn btn-secondary" onClick={handleClearClick}>Clear text</button>
                 </div>
             </div>
             <div className="container my-4">
